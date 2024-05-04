@@ -1,8 +1,5 @@
 ﻿@model ProjectManagementHelper.User
 
-@{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 
@@ -34,9 +31,11 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Role" class="control-label"></label>
-                <select asp-for="Role" class="form-control"></select>
+            <div>
+                    @Html.LabelFor(m => m.Role)
+                    @Html.DropDownList("Role", new SelectList(Enum.GetValues(typeof(Roles))),
+                                       "Select Role",
+                                       new { @class = "form-control" })
                 <span asp-validation-for="Role" class="text-danger"></span>
             </div>
             <div class="form-group">
